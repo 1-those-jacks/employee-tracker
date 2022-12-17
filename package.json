@@ -1,10 +1,11 @@
 {
   "name": "solved",
   "version": "1.0.0",
-  "description": "",
+  "description": "Repository for the Week #12 homework challenge due 12/20/22",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +14,15 @@
     "express": "^4.18.2",
     "inquirer": "^9.1.4",
     "mysql2": "^2.3.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1-those-jacks/employee-tracker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/1-those-jacks/employee-tracker/issues"
+  },
+  "homepage": "https://github.com/1-those-jacks/employee-tracker#readme"
 }
