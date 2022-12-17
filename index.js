@@ -30,6 +30,50 @@ function prompt() {
 				promptMessages.exit 
 				]
 		})
+		.then(answer => {
+			console.log(answer);
+			switch (answer.action) {
+				case promptMessages.viewAllDepartments:
+						viewAllDepartments();
+						break;
+				case promptMessages.viewAllRoles:
+						viewAllRoles();
+						break;
+				case promptMessages.viewAllEmployees:
+						viewAllEmployees();
+						break;
+				case promptMessages.addDepartment:
+						addDepartment();
+						break;
+				case promptMessages.addRole:
+						addRole();
+						break;
+				case promptMessages.addEmployee:
+						addEmployee();
+						break;
+				case promptMessages.updateEmployeeRole:
+						updateEmployeeRole();
+						break;
+				case promptMessages.exit:
+						connection.end();
+						break;
+						
+			}
+		});
 }
+
+function viewAllDepartments(){};
+
+function viewAllRoles(){};
+
+function viewAllEmployees(){};
+
+function addDepartment(){};
+
+function addRole(){};
+
+function addEmployee(){};
+
+function updateEmployeeRole(){};
 
 prompt();
