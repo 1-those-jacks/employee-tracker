@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const connection = require('./db/connection');
-const cTable = require('console.table');
+require('console.table');
 
 const promptMessages = {
     viewAllDepartments: "View All Departments",
@@ -56,13 +56,18 @@ function prompt() {
 						break;
 				case promptMessages.exit:
 						connection.end();
-						break;
-						
+						break;		
 			}
 		});
 }
 
-function viewAllDepartments(){};
+function viewAllDepartments(){
+	const query = "SELECT * FROM department";
+	connection.query(query, (err, results) => {
+		if (err) throw err;
+		console.table(results);
+	});
+};
 
 function viewAllRoles(){};
 
