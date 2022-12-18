@@ -66,12 +66,27 @@ function viewAllDepartments(){
 	connection.query(query, (err, results) => {
 		if (err) throw err;
 		console.table(results);
+		prompt();
 	});
 };
 
-function viewAllRoles(){};
+function viewAllRoles(){
+	const query = "SELECT * FROM roles";
+	connection.query(query, (err, results) => {
+		if (err) throw err;
+		console.table(results);
+		prompt();
+	});
+};
 
-function viewAllEmployees(){};
+function viewAllEmployees(){
+	const query = "SELECT * FROM employee";
+	connection.query(query, (err, results) => {
+		if (err) throw err;
+		console.table(results);
+		prompt();
+	});
+};
 
 function addDepartment(){};
 
