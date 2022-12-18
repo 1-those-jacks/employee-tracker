@@ -88,7 +88,35 @@ function viewAllEmployees(){
 	});
 };
 
-function addDepartment(){};
+function addDepartment(){
+	const query = 'SELECT * FROM department';
+	connection.query(query, (err, results) => {
+		if (err) throw err;
+		console.table(results);
+
+		inquirer
+			.prompt([
+				{
+					name: 'newId',
+					type: 'input',
+					message: 'What is the next ID?'
+				},
+				{
+					name: 'newDept',
+					type: 'input',
+					message: 'What is the new department name?'
+				},
+			])
+			.then((answer) => {
+				connection.query(`INSERT INTO department(id, dept_name) VALUES(?)`, 
+				[answer.newId, answer.newDept],
+				(err, results) => {
+					prompt();
+				}
+				);
+			});
+	});
+};
 
 function addRole(){};
 
