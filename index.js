@@ -199,6 +199,31 @@ function addEmployee() {const query = 'SELECT * FROM employee';
 			});
 	});};
 
-function updateEmployeeRole(){};
+function updateEmployeeRole(){
+	const query = 'SELECT * FROM employee';
+	connection.query(query, (err, results) => {
+		if (err) throw err;
+		console.table(results);
+
+		inquirer
+			.prompt([
+				{
+					name: 'oldRole',
+					type: 'input',
+					message: 'What is the employees Role ID?'
+				},
+				{
+					name: 'updateRole',
+					type: 'input',
+					message: 'What Role ID would you like to update?'
+				} 
+			])
+			.then((answer) => {
+				connection.query(`UPDATE employee SET role_id = ${answer.updateRole} WHERE id = ${answer.oldRole}`, (err, results) => {
+					prompt();
+				});
+			});
+	});
+};
 
 prompt();
