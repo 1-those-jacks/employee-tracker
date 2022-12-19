@@ -108,7 +108,7 @@ function addDepartment(){
 				},
 			])
 			.then((answer) => {
-				connection.query(`INSERT INTO department(id, dept_name) VALUES(?)`, 
+				connection.query(`INSERT INTO department(id, dept_name) VALUE(?, ?)`, 
 				[answer.newId, answer.newDept],
 				(err, results) => {
 					prompt();
