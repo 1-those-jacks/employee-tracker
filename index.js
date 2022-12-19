@@ -118,9 +118,86 @@ function addDepartment(){
 	});
 };
 
-function addRole(){};
+function addRole(){	const query = 'SELECT * FROM roles';
+	connection.query(query, (err, results) => {
+		if (err) throw err;
+		console.table(results);
 
-function addEmployee(){};
+		inquirer
+			.prompt([
+				{
+					name: 'newId',
+					type: 'input',
+					message: 'What is the next ID?'
+				},
+				{
+					name: 'newRole',
+					type: 'input',
+					message: 'What is the new role title?'
+				},
+				{
+					name: 'salary',
+					type: 'input',
+					message: 'What is the salary for this role?'
+				},
+				{
+					name: 'deptId',
+					type: 'input',
+					message: 'What is the ID of the department'
+				}
+			])
+			.then((answer) => {
+				connection.query(`INSERT INTO roles(id, title, salary, department_id) VALUE(?, ?, ?, ?)`, 
+				[answer.newId, answer.newRole, answer.salary, answer.deptId],
+				(err, results) => {
+					prompt();
+				}
+				);
+			});
+	});};
+
+function addEmployee() {const query = 'SELECT * FROM employee';
+	connection.query(query, (err, results) => {
+		if (err) throw err;
+		console.table(results);
+
+		inquirer
+			.prompt([
+				{
+					name: 'newId',
+					type: 'input',
+					message: 'What is the next ID?'
+				},
+				{
+					name: 'newFName',
+					type: 'input',
+					message: 'What is their first name?'
+				},
+				{
+					name: 'newLName',
+					type: 'input',
+					message: 'What is their last name?'
+				},
+				{
+					name: 'roleId',
+					type: 'input',
+					message: 'What is the ID of the role?'
+				},
+				{
+					name: 'managerId',
+					type: 'input',
+					message: 'What is the ID of their manager?'
+				}
+			])
+			.then((answer) => {
+				connection.query(`INSERT INTO employee(id, first_name, last_name, role_id, manager_id) VALUE(?, ?, ?, ?, ?)`, 
+				[answer.newId, answer.newFName, answer.newLName, answer.roleId, answer.managerId],
+				(err, results) => {
+					prompt();
+				}
+				);
+			});
+	});};
 
 function updateEmployeeRole(){};
 
